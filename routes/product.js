@@ -76,28 +76,29 @@ router.put('/updateproduct/:id',  async (req, res) => {
     }
 })
 // ROUTE 4: Delete an existing product using: DELETE "http://localhost:5000/api/product/deleteproduct". 
-// router.delete('/deleteproduct/:id', async (req, res) => {
-//     try {
-//         // Find the product to be delete and delete it
-//         const id=req.params.id
-//         let product = await Product.findById({_id:id});
-//         if (!product) { return res.status(404).send("Not Found") }
+router.delete('/deleteproduct/:id', async (req, res) => {
+    try {
+        // Find the product to be delete and delete it
+        const id=req.params.id
+        let product = await Product.findById(id);
+        if (!product) { return res.status(404).send("Not Found") }
 
-//          product = await Product.findByIdAndDelete({_id:id})
-//         res.json({ "Success": "product has been deleted", data: product });
-//     } catch (error) {
-//         console.error(error.message);
-//         res.status(500).send("Internal Server Error");
-//     }
-// })
-router.delete("/delete/:id",(req,res)=>{
-    const id=req.params.id;
-     Product.deleteOne({_id:id}).then(()=>{
-      res.json({message:"deleted successfull", data:data})
-    }).catch(err=>{
-      res.json({message:"error"})
-    })
-    })
+         product = await Product.findByIdAndDelete(id)
+        res.json({ "Success": "product has been deleted", data: product });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
+// router.delete("/delete/:id",(req,res)=>{
+//     const id=req.params.id;
+//      Product.deleteOne({_id:id}).then((data)=>{
+//       res.json({message:"deleted successfull", data:data})
+//     }).catch(err=>{
+//       res.json({message:"error"})
+//       console.log(err)
+//     })
+//     })
 
 
 

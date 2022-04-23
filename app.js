@@ -1,3 +1,4 @@
+const { urlencoded } = require("express");
 const express= require("express");
 const mongoose=require("mongoose");
 const PORT= process.env.PORT || 5000
@@ -6,12 +7,11 @@ const app = express();
 
 ////midlewares
 app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 app.use("/api/auth", require("./routes/auth"))
 app.use("/api/product", require("./routes/product"))
-// app.use("/api/customer", require("./routes/customer"))
-// app.use("/api/buyer", require("./routes/buyer"))
-// app.use("/api/seller", require("./routes/seller"))
-// app.use("/api/order", require("./routes/order"))
+app.use("/api/address", require("./routes/address"))
+
 
 
 

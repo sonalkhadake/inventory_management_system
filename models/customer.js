@@ -1,5 +1,5 @@
 const mongoose= require("mongoose");
-const { required } = require("nodemon/lib/config");
+
 
 const CustomerSchema= new mongoose.Schema({
     customer_name:{
@@ -11,24 +11,22 @@ const CustomerSchema= new mongoose.Schema({
         required:true,
         unique:true
     },
+    add_address:{
+        
+        type:Array,
+        required:true,
+        unique:true
+    },
+
 
     phone:{
         type:Number
     },
-
-    details:{
-        type:String,
-      
-    },
-    address:{
-        type:String,
-        required:true
-    },
- 
     createdAt:{
         type:Date,
         default:Date.now
     },
+
     updatedAt:{
         type:Date,
         default:Date.now

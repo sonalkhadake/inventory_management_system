@@ -39,12 +39,16 @@ router.post(
       const password = req.body.password;
       const salt = bcrypt.genSaltSync(5);
       const hash = bcrypt.hashSync(password, salt);
+      
       createUser = await new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         company_name: req.body.company_name,
         mobile_number: req.body.mobile_number,
         email: req.body.email,
+        isadmin:req.body.isadmin,
+        isseller:req.body.isseller,
+        isbuyer:req.body.isbuyer,
         password: hash,
       });
       createUser.save();
