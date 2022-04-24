@@ -58,7 +58,7 @@ const { required } = require("nodemon/lib/config");
     
 //   })
 const UserSchema= new mongoose.Schema({
-    frist_name:{
+    first_name:{
         type:String,
         required:true
     },

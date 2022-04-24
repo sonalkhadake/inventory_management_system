@@ -10,7 +10,7 @@ const auth_user = require("../middlewares/Auth_user");
 // const { create } = require("../models/user");
 
 ////////////////////////////////////signUp Route:
-/////////////////////////http://localhost:9046/api/auth/signUp
+/////////////////////////http://localhost:5000/api/auth/signUp
 router.post(
   "/signUp",
 
@@ -39,7 +39,7 @@ router.post(
       const password = req.body.password;
       const salt = bcrypt.genSaltSync(5);
       const hash = bcrypt.hashSync(password, salt);
-      
+
       createUser = await new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,

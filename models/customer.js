@@ -11,14 +11,7 @@ const CustomerSchema= new mongoose.Schema({
         required:true,
         unique:true
     },
-    add_address:{
-        
-        type:Array,
-        required:true,
-        unique:true
-    },
-
-
+    
     phone:{
         type:Number
     },
@@ -32,5 +25,5 @@ const CustomerSchema= new mongoose.Schema({
         default:Date.now
     }
 })
-const Customer= mongoose.model("customer", UserSchema);
+const Customer= mongoose.model("customer", CustomerSchema);
 module.exports=Customer;

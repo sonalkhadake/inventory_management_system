@@ -8,7 +8,7 @@ const Address = require("../models/address");
 // ROUTE 1: Get All the address using: GET "http://localhost:5000/api/address/address".
 router.get('/address',   async (req, res) => {
     try {
-        const address = await User.address.find();
+        const address = await Address.find();
         res.json(address)
     } catch (error) {
         console.error(error.message);
@@ -64,7 +64,6 @@ router.put('/updateAddress/:id', validateAddress.validateUpdate, async (req, res
         postalCode,
         isPrimary} = req.body;
     try {
-        // Create a newNote object
         const newaddress = {};
         if (firstName) { newaddress.firstName = firstName };
         if (lastName) { newaddress.lastName = lastName };
@@ -83,9 +82,9 @@ router.put('/updateAddress/:id', validateAddress.validateUpdate, async (req, res
       
 
         // Find the product to be updated and update it
-        let address = await User.address.findById(req.params.id);
+        let address = await Address.findById(req.params.id);
         if (!address) { return res.status(404).send("Not Found") }
-        address = await User.address.findByIdAndUpdate(req.params.id, { $set: newaddress }, { new: true })
+        address = await Address.findByIdAndUpdate(req.params.id, { $set: newaddress }, { new: true })
         res.json({ address });
     } catch (error) {
         console.error(error.message);
@@ -101,7 +100,7 @@ router.delete('/deleteaddress/:id', async (req, res) => {
         if (!address) { return res.status(404).send("Not Found") }
 
          address = await User.address.findByIdAndDelete(id)
-        res.json({ "Success": "product has been deleted", data: product });
+        res.json({ "Success": "address has been deleted", data: product });
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");

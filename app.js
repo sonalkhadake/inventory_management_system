@@ -11,6 +11,7 @@ app.use(express.urlencoded({extended:false}));
 app.use("/api/auth", require("./routes/auth"))
 app.use("/api/product", require("./routes/product"))
 app.use("/api/address", require("./routes/address"))
+app.use("/api/customer", require("./routes/customer"))
 
 
 
